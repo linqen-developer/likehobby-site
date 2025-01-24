@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>LikeHobby - 서브도메인 생성</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">LikeHobby</a>
+        <div class="nav-links">
+            <a href="dashboard.html">대시보드</a>
+            <a href="index.html">로그아웃</a>
+        </div>
+    </nav>
+
+    <div class="creation-container">
+        <h2>새 서브도메인 생성</h2>
+        <form id="createForm">
+            <div class="input-group">
+                <input type="text" id="subdomain" placeholder="원하는 이름" required>
+                <span class="domain-suffix">.likehobby.com</span>
+            </div>
+            <button type="submit" class="cta-button">생성하기</button>
+        </form>
+        <p id="availabilityStatus"></p>
+    </div>
+
+    <script>
+        const subdomainInput = document.getElementById('subdomain');
+        const statusEl = document.getElementById('availabilityStatus');
+
+        // 서브도메인 사용 가능 여부 실시간 체크 (더미 로직)
+        subdomainInput.addEventListener('input', () => {
+            const desiredName = subdomainInput.value;
+            const isAvailable = !['admin', 'support'].includes(desiredName.toLowerCase());
+            
+            statusEl.textContent = isAvailable 
+                ? "✅ 사용 가능한 이름입니다!" 
+                : "❌ 이미 사용 중인 이름입니다.";
+            statusEl.style.color = isAvailable ? 'green' : 'red';
+        });
+
+        document.getElementById('createForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('서브도메인이 생성되었습니다!');
+            window.location.href = 'dashboard.html';
+        });
+    </script>
+</body>
+</html>
