@@ -112,29 +112,93 @@
         /* Hero Section */
         .hero {
             padding: 120px 0 80px;
-            background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+            background: linear-gradient(135deg, #8a2be2 0%, #4169e1 100%);
             color: white;
-            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        
+        .hero .container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .hero-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .hero-image:hover img {
+            transform: scale(1.05);
         }
         
         .hero h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 20px;
-            color: var(--dark);
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease;
         }
         
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             max-width: 600px;
-            margin: 0 auto 40px;
-            color: var(--dark);
+            margin: 0 0 40px;
+            color: rgba(255,255,255,0.9);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            animation: fadeInUp 1.2s ease;
         }
         
         .hero-buttons {
             display: flex;
-            justify-content: center;
             gap: 20px;
             margin-top: 30px;
+            animation: fadeInUp 1.4s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         /* Features Section */
@@ -271,6 +335,18 @@
             align-items: center;
             justify-content: center;
             color: var(--gray);
+            overflow: hidden;
+        }
+        
+        .community-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .community-image img:hover {
+            transform: scale(1.05);
         }
         
         .community-content {
@@ -547,11 +623,11 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
             
             .hero p {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
             
             .timeline-container::after {
@@ -574,11 +650,15 @@
             
             .hero-buttons {
                 flex-direction: column;
-                align-items: center;
+                align-items: flex-start;
             }
             
             .step::after {
                 display: none;
+            }
+            
+            .hero-image {
+                height: 300px;
             }
         }
         
@@ -607,11 +687,16 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Connect Through Your Passions</h1>
-            <p>Join a global community of hobby enthusiasts. Share experiences, learn from others, and make meaningful connections with people who share your interests.</p>
-            <div class="hero-buttons">
-                <a href="#register" class="btn">Join the Waitlist</a>
-                <a href="#how-it-works" class="btn btn-secondary">Learn More</a>
+            <div class="hero-content">
+                <h1>Connect Through Your Passions</h1>
+                <p>Join a global community of hobby enthusiasts. Share experiences, learn from others, and make meaningful connections with people who share your interests.</p>
+                <div class="hero-buttons">
+                    <a href="#register" class="btn">Join the Waitlist</a>
+                    <a href="#how-it-works" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2232&q=80" alt="People enjoying hobbies together">
             </div>
         </div>
     </section>
@@ -692,7 +777,9 @@
             
             <div class="community-preview">
                 <div class="community-card">
-                    <div class="community-image">Photography Community</div>
+                    <div class="community-image">
+                        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Photography Community">
+                    </div>
                     <div class="community-content">
                         <h3>Photography</h3>
                         <p>Share your best shots, get feedback, and learn techniques from photographers worldwide.</p>
@@ -704,7 +791,9 @@
                 </div>
                 
                 <div class="community-card">
-                    <div class="community-image">Cooking Community</div>
+                    <div class="community-image">
+                        <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Cooking Community">
+                    </div>
                     <div class="community-content">
                         <h3>Cooking & Baking</h3>
                         <p>Exchange recipes, cooking tips, and food photos with culinary enthusiasts.</p>
@@ -716,7 +805,9 @@
                 </div>
                 
                 <div class="community-card">
-                    <div class="community-image">Gardening Community</div>
+                    <div class="community-image">
+                        <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Gardening Community">
+                    </div>
                     <div class="community-content">
                         <h3>Urban Gardening</h3>
                         <p>Learn how to grow plants in small spaces and connect with fellow plant lovers.</p>
