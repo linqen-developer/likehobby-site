@@ -24,14 +24,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta property="og:url" content="https://likehobby.com/">
     <meta property="og:title" content="LikeHobby - Discover Your Perfect Hobby">
     <meta property="og:description" content="Take our interactive quiz and discover new hobbies perfectly suited to your personality and preferences.">
-    <meta property="og:image" content="https://likehobby.com/images/likehobby-social.jpg">
+    <meta property="og:image" content="https://www.likehobby.com/images/likehobby-social.jpg">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://likehobby.com/">
     <meta property="twitter:title" content="LikeHobby - Discover Your Perfect Hobby">
     <meta property="twitter:description" content="Take our interactive quiz and discover new hobbies perfectly suited to your personality and preferences.">
-    <meta property="twitter:image" content="https://likehobby.com/images/likehobby-social.jpg">
+    <meta property="twitter:image" content="https://www.likehobby.com/images/likehobby-social.jpg">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://likehobby.com/">
@@ -467,7 +467,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             },
             {
                 id: 10,
-                text: 'What do you want to gain from your hobby? (Select multiple if needed)',
+                text: 'What do you want to gain from your hobby?',
                 options: [
                     { text: 'Relaxation & stress relief', icon: '😌', value: 'relaxation' },
                     { text: 'Personal growth & learning', icon: '🌱', value: 'growth' },
@@ -476,7 +476,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     { text: 'Health & fitness improvement', icon: '💪', value: 'health' },
                     { text: 'Creative expression', icon: '🎭', value: 'creative_expression' }
                 ],
-                multiSelect: true
+                multiSelect: false
             }
         ];
 
@@ -581,20 +581,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     button.classList.add('selected');
                 }
             } else {
-                // Single selection only
+                // Single selection only - always select one option, no deselection
                 const allOptions = optionsContainer.querySelectorAll('.option-btn');
+                allOptions.forEach(opt => opt.classList.remove('selected'));
                 
-                // Check if clicking the same option that's already selected
-                if (userAnswers[question.id] === value) {
-                    // Deselect if clicking the same option
-                    delete userAnswers[question.id];
-                    button.classList.remove('selected');
-                } else {
-                    // Select a different option
-                    allOptions.forEach(opt => opt.classList.remove('selected'));
-                    userAnswers[question.id] = value;
-                    button.classList.add('selected');
-                }
+                userAnswers[question.id] = value;
+                button.classList.add('selected');
             }
             
             // Enable next button
@@ -1102,20 +1094,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 }
                 maxPossibleScore += 7;
                 
-                // Purpose
-                if (userAnswers[10] && Array.isArray(userAnswers[10])) {
-                    let purposeMatch = 0;
-                    userAnswers[10].forEach(purpose => {
-                        if (hobby.traits.purpose.includes(purpose)) {
-                            purposeMatch++;
-                        }
-                    });
-                    
-                    // Apply weight based on purpose matches
-                    if (purposeMatch > 0) {
-                        const purposeScore = (purposeMatch / Math.min(userAnswers[10].length, 3)) * 20;
-                        score += purposeScore;
-                    }
+                // Purpose - now single select
+                if (userAnswers[10] && hobby.traits.purpose.includes(userAnswers[10])) {
+                    score += 20;
                 }
                 maxPossibleScore += 20;
                 
