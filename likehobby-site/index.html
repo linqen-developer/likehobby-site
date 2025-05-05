@@ -41,8 +41,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #3B82F6;
-            --secondary-color: #EFF6FF;
+            --primary-color: #38A169;
+            --secondary-color: #F0FFF4;
             --accent-color: #F59E0B;
         }
         
@@ -66,9 +66,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         }
         
         .primary-btn:hover {
-            background-color: #2563EB;
+            background-color: #2F855A;
             transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 4px 6px rgba(56, 161, 105, 0.3);
         }
         
         .option-btn {
@@ -78,12 +78,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         
         .option-btn:hover {
             border-color: var(--primary-color);
-            background-color: rgba(59, 130, 246, 0.1);
+            background-color: rgba(56, 161, 105, 0.1);
         }
         
         .option-btn.selected {
             border-color: var(--primary-color);
-            background-color: rgba(59, 130, 246, 0.2);
+            background-color: rgba(56, 161, 105, 0.2);
         }
         
         .progress-bar {
@@ -141,6 +141,48 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .tier3-card {
             transform: scale(0.9);
         }
+        
+        /* 배경 아이콘 스타일 */
+        .bg-icon {
+            position: absolute;
+            opacity: 0.1;
+            z-index: 0;
+            animation: float 8s infinite ease-in-out;
+        }
+        
+        .bg-icon:nth-child(odd) {
+            animation-duration: 9s;
+        }
+        
+        .bg-icon:nth-child(even) {
+            animation-duration: 11s;
+        }
+        
+        .bg-icon:nth-child(3n) {
+            animation-delay: 2s;
+        }
+        
+        .bg-icon:nth-child(5n) {
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+        
+        /* 배경 아이콘 컨테이너 */
+        .bg-icons-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
     </style>
 </head>
 <body class="min-h-screen flex items-center justify-center p-4">
@@ -148,20 +190,47 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MHND2JG3"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+
+    <!-- 배경 아이콘들 -->
+    <div class="bg-icons-container">
+        <div class="bg-icon text-7xl" style="top: 5%; left: 5%;">🎨</div>
+        <div class="bg-icon text-6xl" style="top: 25%; left: 90%;">🏃</div>
+        <div class="bg-icon text-8xl" style="top: 65%; left: 3%;">🎮</div>
+        <div class="bg-icon text-7xl" style="top: 10%; left: 80%;">🎸</div>
+        <div class="bg-icon text-6xl" style="top: 80%; left: 88%;">📚</div>
+        <div class="bg-icon text-7xl" style="top: 45%; left: 7%;">🧘‍♀️</div>
+        <div class="bg-icon text-6xl" style="top: 85%; left: 45%;">🏺</div>
+        <div class="bg-icon text-8xl" style="top: 35%; left: 92%;">🌱</div>
+        <div class="bg-icon text-7xl" style="top: 15%; left: 30%;">📷</div>
+        <div class="bg-icon text-6xl" style="top: 75%; left: 15%;">🏔️</div>
+        <div class="bg-icon text-7xl" style="top: 50%; left: 80%;">👨‍🍳</div>
+        <div class="bg-icon text-8xl" style="top: 20%; left: 65%;">🎭</div>
+        <div class="bg-icon text-6xl" style="top: 70%; left: 30%;">🏊</div>
+        <div class="bg-icon text-8xl" style="top: 40%; left: 20%;">🎲</div>
+        <div class="bg-icon text-6xl" style="top: 15%; left: 10%;">✈️</div>
+        <div class="bg-icon text-7xl" style="top: 60%; left: 75%;">🧶</div>
+    </div>
+
     <main class="container mx-auto max-w-4xl bg-white rounded-xl shadow-lg overflow-hidden">
         <!-- Start Screen -->
-        <section id="start-screen" class="screen active p-8 text-center" aria-label="Introduction">
-            <header class="mb-6">
+        <section id="start-screen" class="screen active p-8 text-center relative overflow-hidden" aria-label="Introduction">
+            <header class="mb-6 relative z-10">
                 <div class="flex justify-center items-center">
                     <span class="text-4xl mr-2" aria-hidden="true">🎯</span>
-                    <h1 class="text-4xl font-bold text-gray-900"><span class="text-blue-500">Like</span>Hobby</h1>
+                    <h1 class="text-4xl font-bold text-gray-900"><span class="text-green-600">Like</span>Hobby</h1>
                 </div>
             </header>
-            <h2 class="text-2xl font-bold text-gray-800 mb-6">Find Your Perfect Hobby</h2>
-            <p class="text-gray-600 mb-8">Discover new activities that match your personality through 10 simple questions.</p>
-            <button id="start-btn" class="primary-btn py-3 px-8 rounded-full text-lg font-medium">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 relative z-10">Find Your Perfect Hobby</h2>
+            <p class="text-gray-600 mb-8 relative z-10">Discover new activities that match your personality through 10 simple questions.</p>
+            <button id="start-btn" class="primary-btn py-3 px-8 rounded-full text-lg font-medium relative z-10">
                 Start Quiz
             </button>
+            <div class="mt-6 text-sm text-gray-500 relative z-10">
+                <strong>Takes less than 2 minutes</strong> • <strong>100+ unique hobbies</strong> • <strong>No signup required</strong>
+            </div>
+            <div class="mt-8 text-xs text-gray-400 relative z-10">
+                Contact : contact@linqen.co.kr
+            </div>
         </section>
 
         <!-- Question Screen -->
@@ -193,7 +262,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <header class="text-center mb-8">
                 <div class="flex justify-center items-center mb-4">
                     <span class="text-3xl mr-2" aria-hidden="true">🎯</span>
-                    <h2 class="text-3xl font-bold"><span class="text-blue-500">Like</span>Hobby</h2>
+                    <h2 class="text-3xl font-bold"><span class="text-green-600">Like</span>Hobby</h2>
                 </div>
                 <h3 id="result-title" class="text-2xl font-bold text-gray-800 mb-2">Your Top 3 Hobby Matches</h3>
                 <p id="result-subtitle" class="text-gray-600">Based on your answers, we've found these perfect matches for you.</p>
@@ -218,7 +287,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             
             <div class="flex flex-col items-center space-y-4">
-                <button id="show-more-btn" class="py-2 px-6 rounded text-blue-600 border border-blue-600 hover:bg-blue-50">Show More Hobbies</button>
+                <button id="show-more-btn" class="py-2 px-6 rounded text-green-600 border border-green-600 hover:bg-green-50">Show More Hobbies</button>
                 <button id="restart-btn" class="py-2 px-4 rounded text-gray-600 border border-gray-300 hover:bg-gray-100">Restart Quiz</button>
             </div>
         </section>
@@ -237,7 +306,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <span id="modal-category" class="inline-block px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-700 mb-3"></span>
+                <span id="modal-category" class="inline-block px-3 py-1 rounded-full text-sm bg-green-100 text-green-700 mb-3"></span>
                 <p id="modal-description" class="text-gray-600 mb-4"></p>
                 
                 <div class="grid grid-cols-2 gap-3 mb-4">
@@ -268,7 +337,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
                 
                 <div class="text-center">
-                    <button id="modal-close-btn" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">Close</button>
+                    <button id="modal-close-btn" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition">Close</button>
                 </div>
             </div>
         </div>
@@ -973,33 +1042,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 
                 // Environment (indoor/outdoor)
                 if (userAnswers[1] && hobby.traits.environment.includes(userAnswers[1])) {
-                    score += 10;
-                }
-                maxPossibleScore += 10;
-                
-                // Social (solo/group)
-                if (userAnswers[2] && hobby.traits.social.includes(userAnswers[2])) {
-                    score += 10;
-                }
-                maxPossibleScore += 10;
-                
-                // Physical activity
-                if (userAnswers[3] && hobby.traits.physical.includes(userAnswers[3])) {
                     score += 15;
                 }
                 maxPossibleScore += 15;
                 
+                // Social (solo/group)
+                if (userAnswers[2] && hobby.traits.social.includes(userAnswers[2])) {
+                    score += 15;
+                }
+                maxPossibleScore += 15;
+                
+                // Physical activity
+                if (userAnswers[3] && hobby.traits.physical.includes(userAnswers[3])) {
+                    score += 18;
+                }
+                maxPossibleScore += 18;
+                
                 // Creativity
                 if (userAnswers[4] && hobby.traits.creativity.includes(userAnswers[4])) {
-                    score += 10;
+                    score += 15;
                 }
-                maxPossibleScore += 10;
+                maxPossibleScore += 15;
                 
                 // Challenge level
                 if (userAnswers[5] && hobby.traits.challenge.includes(userAnswers[5])) {
-                    score += 10;
+                    score += 12;
                 }
-                maxPossibleScore += 10;
+                maxPossibleScore += 12;
                 
                 // Time commitment
                 if (userAnswers[6] && hobby.traits.time.includes(userAnswers[6])) {
@@ -1015,15 +1084,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 
                 // Digital/analog
                 if (userAnswers[8] && hobby.traits.digital.includes(userAnswers[8])) {
-                    score += 5;
+                    score += 8;
                 }
-                maxPossibleScore += 5;
+                maxPossibleScore += 8;
                 
                 // Product vs process
                 if (userAnswers[9] && hobby.traits.product.includes(userAnswers[9])) {
-                    score += 5;
+                    score += 7;
                 }
-                maxPossibleScore += 5;
+                maxPossibleScore += 7;
                 
                 // Purpose
                 if (userAnswers[10] && Array.isArray(userAnswers[10])) {
@@ -1036,28 +1105,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     
                     // Apply weight based on purpose matches
                     if (purposeMatch > 0) {
-                        const purposeScore = (purposeMatch / userAnswers[10].length) * 15;
+                        const purposeScore = (purposeMatch / Math.min(userAnswers[10].length, 3)) * 20;
                         score += purposeScore;
                     }
                 }
-                maxPossibleScore += 15;
+                maxPossibleScore += 20;
                 
-                // Calculate final percentage score
-                const finalScore = Math.round((score / maxPossibleScore) * 100);
+                // Calculate final percentage score and apply curve to increase top scores
+                let finalScore = Math.round((score / maxPossibleScore) * 100);
+                
+                // Apply scoring curve to boost high matching hobbies and reduce low matching ones
+                if (finalScore > 60) {
+                    finalScore = Math.min(95, 60 + Math.round((finalScore - 60) * 1.8));
+                } else if (finalScore < 30) {
+                    finalScore = Math.round(finalScore * 0.8);
+                }
+                
                 scores[hobby.id] = finalScore;
             });
             
+            // Filter out hobbies with less than 10% match
+            const filteredHobbies = hobbies.filter(hobby => scores[hobby.id] >= 10);
+            
             // Sort hobbies by score
-            const sortedHobbies = [...hobbies].sort((a, b) => scores[b.id] - scores[a.id]);
+            const sortedHobbies = [...filteredHobbies].sort((a, b) => scores[b.id] - scores[a.id]);
             
             // Display top 3 hobbies
             displayTier1Hobbies(sortedHobbies.slice(0, 3), scores);
             
-            // Prepare next 7 hobbies
-            displayTier2Hobbies(sortedHobbies.slice(3, 10), scores);
+            // Prepare next 7 hobbies (or fewer if filtered)
+            const tier2Count = Math.min(7, sortedHobbies.length - 3);
+            if (tier2Count > 0) {
+                displayTier2Hobbies(sortedHobbies.slice(3, 3 + tier2Count), scores);
+            }
             
-            // Prepare final 10 hobbies
-            displayTier3Hobbies(sortedHobbies.slice(10, 20), scores);
+            // Prepare final hobbies (or fewer if filtered)
+            const tier3Start = 3 + tier2Count;
+            const tier3Count = Math.max(0, sortedHobbies.length - tier3Start);
+            if (tier3Count > 0) {
+                displayTier3Hobbies(sortedHobbies.slice(tier3Start), scores);
+            }
+            
+            // Hide "Show More" button if not enough hobbies
+            if (sortedHobbies.length <= 3) {
+                showMoreBtn.style.display = 'none';
+            }
         }
 
         // Display Tier 1 hobbies (Top 3)
@@ -1066,7 +1158,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             
             hobbies.forEach((hobby, index) => {
                 const card = document.createElement('div');
-                card.className = 'hobby-card tier1-card bg-white rounded-xl shadow-md p-6 border-2 border-blue-100 fade-in';
+                card.className = 'hobby-card tier1-card bg-white rounded-xl shadow-md p-6 border-2 border-green-100 fade-in';
                 if (index === 0) {
                     card.classList.add('border-yellow-400');
                 }
@@ -1077,7 +1169,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <span class="text-5xl mr-4">${hobby.icon}</span>
                             <div>
                                 <h3 class="text-2xl font-bold text-gray-800">${hobby.name}</h3>
-                                <span class="inline-block px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-700 mt-1">${hobby.category}</span>
+                                <span class="inline-block px-3 py-1 rounded-full text-sm bg-green-100 text-green-700 mt-1">${hobby.category}</span>
                             </div>
                         </div>
                         ${index === 0 ? '<span class="text-2xl">🌟</span>' : ''}
@@ -1092,7 +1184,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <div class="match-fill" style="width: ${scores[hobby.id]}%"></div>
                         </div>
                     </div>
-                    <button class="learn-more-btn mt-2 w-full py-2 px-4 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition duration-300" data-hobby-id="${hobby.id}">Learn More</button>
+                    <button class="learn-more-btn mt-2 w-full py-2 px-4 bg-green-100 text-green-700 rounded hover:bg-green-200 transition duration-300" data-hobby-id="${hobby.id}">Learn More</button>
                 `;
                 
                 hobbyResultsTier1.appendChild(card);
@@ -1114,14 +1206,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             
             hobbies.forEach(hobby => {
                 const card = document.createElement('div');
-                card.className = 'hobby-card tier2-card bg-white rounded-lg shadow-sm p-4 border border-blue-50';
+                card.className = 'hobby-card tier2-card bg-white rounded-lg shadow-sm p-4 border border-green-50';
                 
                 card.innerHTML = `
                     <div class="flex items-center mb-3">
                         <span class="text-3xl mr-3">${hobby.icon}</span>
                         <div>
                             <h3 class="text-xl font-bold text-gray-800">${hobby.name}</h3>
-                            <span class="inline-block px-2 py-0.5 rounded-full text-xs bg-blue-100 text-blue-700">${hobby.category}</span>
+                            <span class="inline-block px-2 py-0.5 rounded-full text-xs bg-green-100 text-green-700">${hobby.category}</span>
                         </div>
                     </div>
                     <p class="text-gray-600 text-sm mb-3">${hobby.description.substring(0, 60)}...</p>
@@ -1131,7 +1223,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         </div>
                         <span class="text-sm font-medium text-gray-800">${scores[hobby.id]}%</span>
                     </div>
-                    <button class="learn-more-btn w-full py-1 px-2 text-sm bg-blue-50 text-blue-700 rounded hover:bg-blue-100 transition duration-300" data-hobby-id="${hobby.id}">Learn More</button>
+                    <button class="learn-more-btn w-full py-1 px-2 text-sm bg-green-50 text-green-700 rounded hover:bg-green-100 transition duration-300" data-hobby-id="${hobby.id}">Learn More</button>
                 `;
                 
                 container.appendChild(card);
@@ -1161,12 +1253,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <div class="flex-1">
                             <h3 class="text-base font-bold text-gray-800">${hobby.name}</h3>
                             <div class="flex justify-between items-center mt-1">
-                                <span class="text-xs text-blue-700">${hobby.category}</span>
+                                <span class="text-xs text-green-700">${hobby.category}</span>
                                 <span class="text-xs font-medium text-gray-800">${scores[hobby.id]}%</span>
                             </div>
                         </div>
                     </div>
-                    <button class="learn-more-btn w-full mt-2 py-1 text-xs bg-gray-50 text-blue-700 rounded hover:bg-blue-50 transition duration-300" data-hobby-id="${hobby.id}">Learn More</button>
+                    <button class="learn-more-btn w-full mt-2 py-1 text-xs bg-gray-50 text-green-700 rounded hover:bg-green-50 transition duration-300" data-hobby-id="${hobby.id}">Learn More</button>
                 `;
                 
                 container.appendChild(card);
