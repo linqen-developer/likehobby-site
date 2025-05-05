@@ -583,10 +583,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             } else {
                 // Single selection only
                 const allOptions = optionsContainer.querySelectorAll('.option-btn');
-                allOptions.forEach(opt => opt.classList.remove('selected'));
                 
-                userAnswers[question.id] = value;
-                button.classList.add('selected');
+                // Check if clicking the same option that's already selected
+                if (userAnswers[question.id] === value) {
+                    // Deselect if clicking the same option
+                    delete userAnswers[question.id];
+                    button.classList.remove('selected');
+                } else {
+                    // Select a different option
+                    allOptions.forEach(opt => opt.classList.remove('selected'));
+                    userAnswers[question.id] = value;
+                    button.classList.add('selected');
+                }
             }
             
             // Enable next button
