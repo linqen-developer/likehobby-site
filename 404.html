@@ -6,6 +6,21 @@
   <meta name="robots" content="noindex,follow">
   <title>LikeHobby Sudoku has moved</title>
   <link rel="canonical" href="https://www.likehobby.com/sudoku.html">
+  <script>
+  (() => {
+    if (location.hostname !== 'linqen-developer.github.io' || !/^\/likehobby-site(?:\/|$)/.test(location.pathname)) return;
+    const destination = new URL('https://www.likehobby.com/sudoku.html');
+    const incoming = new URLSearchParams(location.search);
+    const test = incoming.get('lh_test');
+    if (test && /^[A-Za-z0-9_-]{1,64}$/.test(test)) destination.searchParams.set('lh_test', test);
+    for (const key of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']) {
+      const value = incoming.get(key);
+      if (value && value.length <= 200 && !/[\u0000-\u001f]/.test(value)) destination.searchParams.set(key, value);
+    }
+    if (['#privacy', '#contact', '#terms', '#how-to-play'].includes(location.hash)) destination.hash = location.hash;
+    location.replace(destination.href);
+  })();
+  </script>
 </head>
 <body>
   <p><a href="https://www.likehobby.com/sudoku.html">Play LikeHobby Sudoku</a></p>
