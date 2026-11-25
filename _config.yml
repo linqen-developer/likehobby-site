@@ -1,0 +1,4 @@
+# Vercel serves the application. Do not publish a second copy through Pages.
+exclude:
+  - likehobby-site
+  - README.md
